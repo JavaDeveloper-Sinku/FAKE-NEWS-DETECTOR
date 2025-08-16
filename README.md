@@ -55,7 +55,8 @@ pip install -r requirements.txt
 python main.py
 
 Server run Command
-Uvicorn main:app --reload
+uvicorn main:app --reload
+
 ```
 
 2. **Input any news text** and the model will classify it as **REAL** or **FAKE** with confidence score.
