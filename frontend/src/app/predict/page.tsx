@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { AlertTriangle, CheckCircle, BarChart3 } from "lucide-react"; 
+import { AlertTriangle, CheckCircle, BarChart3 } from "lucide-react";
 
 type PredictionResult = {
   label: string;
@@ -23,8 +23,15 @@ export default function FakeNewsDetector() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text }),
       });
-      const data: PredictionResult = await res.json();
-      setResult(data);
+
+      const data = await res.json();
+      console.log("API Response:", data); // 👀 Debugging ke liye
+
+      // ✅ Access nested prediction object
+      const label = data.prediction?.label || "UNKNOWN";
+      const confidence = data.prediction?.confidence || 0;
+
+      setResult({ label, confidence });
     } catch (err) {
       console.error("Error:", err);
     } finally {
@@ -38,7 +45,6 @@ export default function FakeNewsDetector() {
         📰 Fake News Detector
       </h1>
 
-      {/* Input Box */}
       <textarea
         className="w-full max-w-2xl p-4 rounded-xl border shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         rows={5}
@@ -55,7 +61,6 @@ export default function FakeNewsDetector() {
         {loading ? "Checking..." : "Check Fake News"}
       </button>
 
-      {/* Result Box */}
       {result && (
         <div className="mt-8 w-full max-w-md p-6 bg-white rounded-2xl shadow-lg text-center">
           <div className="flex flex-col items-center">
@@ -65,11 +70,16 @@ export default function FakeNewsDetector() {
               <CheckCircle className="text-green-500 w-10 h-10 mb-2" />
             )}
             <h2 className="text-2xl font-semibold mb-2">
-              {result.label === "FAKE" ? "⚠️ Fake News Detected" : "✅ Real News"}
+              {result.label === "FAKE"
+                ? "⚠️ Fake News Detected"
+                : "✅ Real News"}
             </h2>
             <p className="text-gray-600 flex items-center gap-2">
               <BarChart3 className="w-4 h-4" />
-              Confidence: <span className="font-medium">{(result.confidence * 100).toFixed(2)}%</span>
+              Confidence:{" "}
+              <span className="font-medium">
+                {(result.confidence * 100).toFixed(2)}%
+              </span>
             </p>
           </div>
         </div>
