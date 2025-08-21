@@ -58,10 +58,16 @@ Virtual Environment Activate Karo
 
 Mac (bash/zsh shell) me activate karne ke liye:
 
-source env/bin/activate
+source venv/bin/activate
 
 Server run Command
 uvicorn main:app --reload
+
+Short form agar tu venv ke andar hi run kar raha hai:
+
+Command---
+./venv/bin/python -m uvicorn main:app --reload
+
 
 ```
 
