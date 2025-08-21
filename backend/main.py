@@ -1,41 +1,44 @@
-# main.py
 from fastapi import FastAPI
 from pydantic import BaseModel
-from models.model_loader import predict_fake_news
-from api.routes import router
+from app.services import predict_news, verify_with_newsapi
 from fastapi.middleware.cors import CORSMiddleware
+app = FastAPI()
 
-# FastAPI app
-app = FastAPI(title="Fake News Detector API", version="1.0.0")
+class NewsRequest(BaseModel):
+    text: str
 
-
-#CORS steup ( frontend port )
+# CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend URL
+    allow_origins=["*"],  # yaha specific domain bhi de sakte ho ["http://localhost:3000"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-class NewsRequest(BaseModel):
-    text: str
-
-# Routes register karna
-app.include_router(router)
 
 
-#API Endpoints
+
+
 @app.get("/")
-def home():
-    return {"message": "Fake News Detector API is running"}
+def Home():
+    return {"message": "Welcome to the News Verification API!"}
 
 
 @app.post("/predict")
-def predict(request: NewsRequest):
-    result = predict_fake_news(request.text)
+def check_news(request: NewsRequest):
+    ai_result = predict_news(request.text)
+    verified_sources = verify_with_newsapi(request.text)
+
+    final_verification = "UNVERIFIED"
+    if verified_sources:
+        final_verification = "REAL" if ai_result["label"] == "REAL" else ai_result["label"]
+    else:
+        final_verification = ai_result["label"]
+
     return {
-        "input_text": request.text,
-        "predication": result["prediction"],
-        "confidence": result["confidence"]
+        "ai_prediction": ai_result["label"],
+        "confidence": ai_result["score"],
+        "verified_sources": verified_sources,
+        "final_verification": final_verification
     }
