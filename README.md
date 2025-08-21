@@ -54,6 +54,12 @@ pip install -r requirements.txt
 ```bash
 python main.py
 
+Virtual Environment Activate Karo
+
+Mac (bash/zsh shell) me activate karne ke liye:
+
+source env/bin/activate
+
 Server run Command
 uvicorn main:app --reload
 
