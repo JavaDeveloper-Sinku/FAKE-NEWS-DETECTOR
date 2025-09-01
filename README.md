@@ -65,7 +65,7 @@ uvicorn main:app --reload
 
 Short form agar tu venv ke andar hi run kar raha hai:
 
-Command---
+ALPHA__Command---
 ./venv/bin/python -m uvicorn main:app --reload
 
 
