@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+torch
+transformers
+newsapi-python
+numpy
+scikit-learn
+joblib
+requests

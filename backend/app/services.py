@@ -11,7 +11,7 @@ model_name = "Pulk17/Fake-News-Detection"
 fake_news_model = pipeline("text-classification", model=model_name)
 
 # NewsAPI client
-NEWS_API_KEY = "fb00544f0b7d4599b07450249837823d"
+NEWS_API_KEY = os.environ.get("NEWS_API_KEY")
 newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
 # Mapping dictionary
