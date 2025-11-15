@@ -99,3 +99,17 @@ Agar chaho, mai aapke repo ke liye **aur detailed version** bana sakta hoon jism
 
 Chahoge mai wo version bhi bana doon?
 ```
+
+
+
+
+
+
+news api : fb00544f0b7d4599b07450249837823d
+
+
+model 1 : "Pulk17/Fake-News-Detection"
+
+
+new models : ---
+model 2 : distilbert-base-uncased-finetuned-sst-2-english

@@ -1,4 +1,5 @@
 
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
@@ -7,7 +8,7 @@ from newsapi import NewsApiClient
 app = FastAPI()
 
 # HuggingFace Model
-model_name = "Pulk17/Fake-News-Detection"
+model_name = "distilbert-base-uncased-finetuned-sst-2-english"
 fake_news_model = pipeline("text-classification", model=model_name)
 
 # NewsAPI client
