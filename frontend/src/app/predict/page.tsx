@@ -100,7 +100,7 @@ export default function FakeNewsDetector() {
           <h2 className="text-xl font-bold mb-3 text-gray-800 text-center">Instructions</h2>
           <ol className="list-decimal list-inside text-gray-700 text-sm space-y-2">
             <li>Paste the news article or statement in the text box.</li>
-            <li>Click on the "Check Fake News" button.</li>
+            <li>Click on the &quot;Check Fake News&quot; button.</li>
             <li>View the result and confidence score below.</li>
           </ol>
         </div>
