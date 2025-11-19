@@ -43,7 +43,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-blue-300"
         >
-          About Fake News Detector AI
+          Fake News Detector AI
         </motion.h1>
 
         <motion.p
