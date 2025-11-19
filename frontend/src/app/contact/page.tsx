@@ -36,7 +36,7 @@ export default function ContactPage() {
         transition={{ delay: 0.3 }}
         className="text-center max-w-2xl mb-12 text-white/80"
       >
-        Have questions or suggestions? Send us a message and we'll get back to you promptly.
+        Have questions or suggestions? Send us a message and we&apos;ll get back to you promptly.
       </motion.p>
 
       <div className="flex flex-col md:flex-row gap-12 w-full max-w-5xl">

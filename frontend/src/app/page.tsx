@@ -2,19 +2,13 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {
-  Cpu,
-  BarChart3,
-  Users,
-  ShieldCheck,
-  Globe,
-  Sparkles,
-} from "lucide-react";
+import Link from "next/link";
+import { Cpu, BarChart3, Globe, Sparkles } from "lucide-react";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
-      {/* NAV (small sticky header to match site) */}
+      {/* NAV (sticky header) */}
       <header className="sticky top-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
@@ -25,10 +19,15 @@ export default function Home() {
           </div>
 
           <nav className="flex items-center gap-6 text-sm">
-            <a href="/" className="hover:text-purple-300 transition">Home</a>
-          
-            <a href="/news-detector" className="hover:text-purple-300 transition">Predict</a>
-            <a href="/contact" className="hover:text-purple-300 transition">Contact</a>
+            <Link href="/" className="hover:text-purple-300 transition">
+              Home
+            </Link>
+            <Link href="/news-detector" className="hover:text-purple-300 transition">
+              Predict
+            </Link>
+            <Link href="/contact" className="hover:text-purple-300 transition">
+              Contact
+            </Link>
           </nav>
         </div>
       </header>
@@ -53,22 +52,27 @@ export default function Home() {
           transition={{ delay: 0.25 }}
           className="text-gray-200 max-w-3xl mt-6 text-lg md:text-xl"
         >
-          Ek modern AI-powered platform jo news articles ko <span className="text-green-400 font-semibold">REAL</span> ya <span className="text-red-400 font-semibold">FAKE</span> classify karta hai — fast, explainable, aur production-ready.
+         <p>
+  Ek modern AI-powered platform jo news articles ko
+  <span className="text-green-400 font-semibold"> REAL </span> ya
+  <span className="text-red-400 font-semibold"> FAKE </span> classify karta hai fast explainable aur production-ready.
+</p>
+
         </motion.p>
 
         <div className="mt-8 flex gap-4">
-          <a
+          <Link
             href="/news-detector"
             className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg font-semibold"
           >
             🚀 Try Prediction
-          </a>
-          <a
+          </Link>
+          <Link
             href="#team"
             className="inline-block px-6 py-3 rounded-lg bg-white/10 border border-white/10 hover:bg-white/5 transition"
           >
             Meet the Creator
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -126,50 +130,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DETAILS / WHY IT MATTERS */}
-      <section className="bg-black/10 border-t border-white/5 py-16">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Why this matters</h3>
-            <p className="text-gray-300 mb-4">
-              Misinformation communities ko damage kar sakti hai — accurate tools se log informed decisions le sakte hain.
-            </p>
-            <ul className="space-y-3 text-gray-300">
-              <li>• Reduce viral falsehoods</li>
-              <li>• Help journalists & fact-checkers</li>
-              <li>• Improve platform moderation</li>
-            </ul>
-          </div>
-
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/3 border border-white/5 backdrop-blur-md shadow-lg">
-            <h4 className="font-semibold mb-3">Deployment & Integration</h4>
-            <p className="text-gray-300 text-sm mb-4">
-              API-based endpoints, embeddable widget, and a simple dashboard for monitoring trends and batch checks.
-            </p>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-md bg-gradient-to-r from-purple-500 to-blue-400 flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Privacy-first</div>
-                  <div className="text-xs text-gray-300">Minimal logging, optional on-prem deployment.</div>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-md bg-gradient-to-r from-pink-500 to-purple-500 flex items-center justify-center">
-                  <Users className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-sm font-semibold">Collaborative</div>
-                  <div className="text-xs text-gray-300">Team accounts for moderation & review workflows.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* TEAM / DEVELOPER */}
       <section id="team" className="max-w-6xl mx-auto px-6 py-20">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12">Meet the Creator</h2>
@@ -199,40 +159,52 @@ export default function Home() {
             </p>
 
             <div className="flex gap-3">
-              <a className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition" href="https://github.com">
+              <a
+                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 GitHub
               </a>
-              <a className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition" href="https://linkedin.com">
+              <a
+                className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 LinkedIn
               </a>
-              <a className="px-4 py-2 rounded-lg bg-blue-400 text-white hover:bg-blue-300 transition" href="https://twitter.com">
+              <a
+                className="px-4 py-2 rounded-lg bg-blue-400 text-white hover:bg-blue-300 transition"
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Twitter
               </a>
             </div>
           </div>
-         </div>
-
-
-         
-
-
+        </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center p-10 rounded-2xl bg-gradient-to-br from-white/5 to-white/3 border border-white/5 backdrop-blur-md shadow-xl">
           <h3 className="text-2xl font-bold mb-4">Ready to test an article?</h3>
-          <p className="text-gray-300 mb-6">Paste the article or URL and get an instant prediction with explanation.</p>
-          <a
+          <p className="text-gray-300 mb-6">
+            Paste the article or URL and get an instant prediction with explanation.
+          </p>
+          <Link
             href="/news-detector"
             className="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 font-semibold shadow-lg"
           >
             🚀 Predict Now
-          </a>
+          </Link>
         </div>
       </section>
 
-      {/* CONTACT / FOOTER */}
+      {/* FOOTER */}
       <footer className="bg-black/20 border-t border-white/5 py-10 mt-10">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
           <div>
@@ -243,15 +215,30 @@ export default function Home() {
           <div>
             <h4 className="font-semibold mb-2">Quick Links</h4>
             <ul className="text-sm text-gray-300 space-y-2">
-              <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="/news-detector" className="hover:text-white">Predict</a></li>
+              <li>
+                <Link href="/" className="hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/news-detector" className="hover:text-white">
+                  Predict
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-semibold mb-2">Contact</h4>
             <p className="text-sm text-gray-300">hello@fakenews.ai</p>
-            <p className="text-sm text-gray-400 mt-3">© {new Date().getFullYear()} Fake News Detector AI</p>
+            <p className="text-sm text-gray-400 mt-3">
+              © {new Date().getFullYear()} Fake News Detector AI
+            </p>
           </div>
         </div>
       </footer>
