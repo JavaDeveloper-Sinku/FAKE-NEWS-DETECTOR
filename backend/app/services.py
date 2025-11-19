@@ -8,7 +8,7 @@ from newsapi import NewsApiClient
 app = FastAPI()
 
 # HuggingFace Model
-model_name = "distilbert-base-uncased-finetuned-sst-2-english"
+model_name = "Pulk17/Fake-News-Detection"
 fake_news_model = pipeline("text-classification", model=model_name)
 
 # NewsAPI client
