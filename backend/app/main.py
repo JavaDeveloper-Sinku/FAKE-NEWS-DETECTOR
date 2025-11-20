@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from app.services import predict_news, verify_with_newsapi
+from app.services.services import predict_news, verify_with_newsapi
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
@@ -15,9 +15,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-
 
 
 @app.get("/")

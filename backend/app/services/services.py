@@ -1,11 +1,6 @@
-
 import os
-from fastapi import FastAPI
-from pydantic import BaseModel
 from transformers import pipeline
 from newsapi import NewsApiClient
-
-app = FastAPI()
 
 # HuggingFace Model
 model_name = "Pulk17/Fake-News-Detection"
@@ -20,9 +15,6 @@ label_mapping = {
     "LABEL_0": "REAL",
     "LABEL_1": "FAKE"
 }
-
-class NewsRequest(BaseModel):
-    news_title: str   # input JSON body ka format
 
 def predict_news(news_title: str):
     result = fake_news_model(news_title)[0]
@@ -53,21 +45,3 @@ def verify_with_newsapi(news_title: str):
         })
 
     return verified_sources
-
-def analyze_news(news_title: str):
-    ai_result = predict_news(news_title)
-    sources = verify_with_newsapi(news_title)
-
-    return {
-        "ai_prediction": ai_result["label"],
-        "confidence": ai_result["score"],
-        "verified_sources": sources,
-        "final_verification": (
-            ai_result["label"] if not sources else "REAL"
-        )
-    }
-
-# FastAPI endpoint
-@app.post("/analyze")
-def analyze(request: NewsRequest):
-    return analyze_news(request.news_title)
