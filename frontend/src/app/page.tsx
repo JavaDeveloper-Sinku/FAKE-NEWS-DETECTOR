@@ -25,6 +25,9 @@ export default function Home() {
             <Link href="/news-detector" className="hover:text-purple-300 transition">
               Predict
             </Link>
+            <Link href="/about" className="hover:text-purple-300 transition">
+              About
+            </Link>
             <Link href="/contact" className="hover:text-purple-300 transition">
               Contact
             </Link>
